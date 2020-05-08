@@ -38,7 +38,12 @@ program
         'Configuration file path.',
         'magepack.config.js'
     )
-    .option('-e, --exclude-themes', 'Comma separated list of themes to exclude when bundling')
+    .option(
+        '-e, --exclude-themes <themes>',
+        'Comma separated list of themes to exclude when bundling',
+        value => value.split(','),
+        'Magento/blank'
+    )
     .option('-d, --debug', 'Enable logging of debugging information.')
     .action(config => {
         if (config.debug) {

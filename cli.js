@@ -22,7 +22,7 @@ program
     .option('-u, --auth-username <user>', 'Basic authentication username.')
     .option('-p, --auth-password <password>', 'Basic authentication password.')
     .option('-d, --debug', 'Enable logging of debugging information.')
-    .action((config) => {
+    .action(config => {
         if (config.debug) {
             logger.level = 5;
         }
@@ -40,12 +40,12 @@ program
     )
     .option('-e, --exclude-themes', 'Comma separated list of themes to exclude when bundling')
     .option('-d, --debug', 'Enable logging of debugging information.')
-    .action(({ config, excludeThemes, debug }) => {
-        if (debug) {
+    .action(config => {
+        if (config.debug) {
             logger.level = 5;
         }
 
-        require('./lib/bundle')(config, excludeThemes).catch(logger.error);
+        require('./lib/bundle')(config).catch(logger.error);
     });
 
 program.parse(process.argv);

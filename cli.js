@@ -22,6 +22,7 @@ program
     .option('-u, --auth-username <user>', 'Basic authentication username.')
     .option('-p, --auth-password <password>', 'Basic authentication password.')
     .option('-d, --debug', 'Enable logging of debugging information.')
+    .option('-o, --option-resolver', 'Path to product option resolver')
     .action((config) => {
         if (config.debug) {
             logger.level = 5;
